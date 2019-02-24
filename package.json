@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
+    "test": "mocha src/**/*.spec.*",
     "tsc": "tsc --project tsconfig.json --skipLibCheck --noEmit",
     "lint": "tslint -c tslint.json 'src/**/*.ts?(x)'"
   },
@@ -13,20 +13,29 @@
     "react-native": "0.58.5"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/enzyme": "^3.9.0",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/mocha": "^5.2.6",
     "@types/react": "^16.8.4",
     "@types/react-native": "^0.57.38",
+    "@types/sinon": "^7.0.6",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "24.1.0",
-    "jest": "24.1.0",
+    "chai": "^4.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "metro-react-native-babel-preset": "0.52.0",
+    "mocha": "^6.0.1",
+    "nyc": "^13.3.0",
+    "react-native-mock-render": "^0.1.2",
     "react-native-typescript-transformer": "^1.2.11",
     "react-test-renderer": "16.6.3",
+    "sinon": "^7.2.4",
+    "ts-node": "^8.0.2",
     "tslint": "^5.13.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-react": "^3.6.0",
     "typescript": "^3.3.3333"
-  },
-  "jest": {
-    "preset": "react-native"
   }
 }
