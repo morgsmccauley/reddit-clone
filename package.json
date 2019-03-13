@@ -9,8 +9,8 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts?(x)'"
   },
   "dependencies": {
-    "react": "16.6.3",
-    "react-native": "0.58.5"
+    "react": "16.8.3",
+    "react-native": "0.59.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
