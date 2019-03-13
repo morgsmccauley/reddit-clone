@@ -1,29 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
-
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-
-const instructions = Platform.select({
-  android: 'Double tap R on your keyboard to reload,\nShake or press menu button for dev menu',
-  ios: 'Press Cmd+R to reload,\nCmd+D or shake for dev menu',
-});
+import { StyleSheet, View } from 'react-native';
+import Posts from './components/Posts';
+import { IPost } from './components/Post';
 
 interface Props {}
 
-export default class App extends Component<Props> {
+interface State {
+  posts: IPost[];
+}
+
+export default class App extends Component<Props, State> {
+  state = {
+    posts: [],
+  };
+
+  componentDidMount() {
+    fetch('https://reddit.com/r/aww.json')
+      .then((response: any) => response.json())
+      .then(subreddit => subreddit.data.children.map(({ data }: any) => data))
+      .then(posts => this.setState({ posts }));
+  }
+
   public render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Posts posts={this.state.posts} />
       </View>
     );
   }
@@ -42,8 +43,9 @@ const styles = StyleSheet.create({
   },
   container: {
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'rgb(237, 238, 240)',
     flex: 1,
     justifyContent: 'center',
+    paddingTop: 50,
   },
 });
