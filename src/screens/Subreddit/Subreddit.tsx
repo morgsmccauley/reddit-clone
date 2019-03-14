@@ -1,31 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
+import styles from './Subreddit.style';
 import Posts from '../../components/Posts';
 import { IPost } from '../../components/Post';
-import { fetchPostsForSubreddit } from '../../actions/posts';
-
-const styles = StyleSheet.create({
-  instructions: {
-    color: '#333333',
-    marginBottom: 5,
-    textAlign: 'center',
-  },
-  welcome: {
-    fontSize: 20,
-    margin: 10,
-    textAlign: 'center',
-  },
-  container: {
-    alignItems: 'center',
-    backgroundColor: 'rgb(237, 238, 240)',
-    flex: 1,
-    justifyContent: 'center',
-    paddingTop: 50,
-  },
-});
+import { fetchPostsForSubreddit } from '../../actions/postsActions';
 
 interface Props {
   dispatch: Dispatch<any>;

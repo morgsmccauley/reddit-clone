@@ -1,4 +1,4 @@
-import PostActions from '../actions/posts';
+import PostsActions from '../actions/postsActions';
 
 interface State {
   data: [];
@@ -20,16 +20,16 @@ const initialState: State = {
 
 export default (state = initialState, action: Action) => {
   switch (action.type) {
-    case PostActions.FETCHING_POSTS:
+    case PostsActions.FETCHING_POSTS:
       return {
         isFetching: true,
       };
-    case PostActions.FETCH_POSTS_SUCCESS:
+    case PostsActions.FETCH_POSTS_SUCCESS:
       return {
         isFetching: false,
         data: action.payload,
       };
-    case PostActions.FETCH_POSTS_ERROR:
+    case PostsActions.FETCH_POSTS_ERROR:
       return {
         isFetching: false,
         error: action.error,
