@@ -1,9 +1,9 @@
 import PostsActions from '../actions/postsActions';
 
 interface State {
-  data: [];
   isFetching: boolean;
-  error: string;
+  data?: [];
+  error?: string;
 }
 
 interface Action {
@@ -13,9 +13,7 @@ interface Action {
 }
 
 const initialState: State = {
-  data: [],
   isFetching: false,
-  error: '',
 };
 
 export default (state = initialState, action: Action) => {
