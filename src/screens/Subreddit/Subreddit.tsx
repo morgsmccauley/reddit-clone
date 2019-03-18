@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -9,36 +9,38 @@ import { IPost } from '../../components/Post';
 import { fetchPostsForSubreddit } from '../../actions/postsActions';
 
 interface Props {
-  dispatch: Dispatch<any>;
   posts: IPost[];
   isFetching: boolean;
+  fetchPosts?: (subreddit: string) => void;
 }
 
-class Subreddit extends Component<Props> {
-  componentDidMount() {
-    this.props.dispatch(fetchPostsForSubreddit('aww'));
-  }
+const renderLoading = () => <Text>Loading...</Text>;
 
-  renderPosts() {
-    return <Posts posts={this.props.posts} />;
-  }
+const Subreddit = ({
+  fetchPosts,
+  posts,
+  isFetching,
+}: Props) => {
+  useEffect(() => {
+    fetchPosts && fetchPosts('aww');
+  }, []);
 
-  renderLoading() {
-    return <Text>Loading...</Text>;
-  }
+  const renderPosts = () => <Posts posts={posts} />;
 
-  public render() {
-    return (
-      <View style={styles.container}>
-        {this.props.isFetching ? this.renderLoading() : this.renderPosts()}
-      </View>
-    );
-  }
-}
+  return (
+    <View style={styles.container}>
+      {isFetching ? renderLoading() : renderPosts()}
+    </View>
+  );
+};
 
 const mapStateToProps = (state: any) => ({
   posts: state.posts.data,
   isFetching: state.posts.isFetching,
 });
 
-export default connect(mapStateToProps)(Subreddit);
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  fetchPosts: (subreddit: string) => dispatch(fetchPostsForSubreddit(subreddit)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Subreddit);

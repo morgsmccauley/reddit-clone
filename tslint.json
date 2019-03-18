@@ -8,7 +8,9 @@
   "rules": {
     "import-name": [false],
     "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"],
-    "no-console": [true, "log", "warning"]
+    "no-console": [true, "log", "warning"],
+    "align": false,
+    "no-shadowed-variable": true
   },
   "rulesDirectory": []
 }
