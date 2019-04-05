@@ -5,7 +5,7 @@ import { Dispatch } from 'redux';
 
 import styles from './Subreddit.style';
 import Posts from '../../components/Posts';
-import { IPost } from '../../services/postsService';
+import { IPost } from '../../types/post';
 import { fetchPostsForSubreddit } from '../../actions/postsActions';
 
 interface Props {

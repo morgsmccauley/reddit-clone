@@ -6,7 +6,7 @@ import {
   Image,
 } from 'react-native';
 
-import { IPost } from '../services/postsService';
+import { IPost, IImage } from '../types/post';
 
 export interface ImageDetails {
   url: string;
@@ -22,17 +22,21 @@ interface Props {
   post: IPost;
 }
 
+const renderImage = ({ height, width, url }: IImage) => (
+  <Image
+    style={{ height, width }}
+    resizeMode="contain"
+    source={{ uri: url }}
+  />
+);
+
 const Post = ({ post }: Props) => (
   <View style={styles.container}>
     <View style={styles.header}>
       <Text>{`u/${post.author}`}</Text>
       <Text style={styles.title}>{post.title}</Text>
     </View>
-    <Image
-      style={{ height: post.image.height, width: post.image.width }}
-      resizeMode="contain"
-      source={{ uri: post.image.url }}
-    />
+    {post.image && renderImage(post.image)}
     <View style={styles.footerContainer}>
       <Text>{post.score}</Text>
       <Text>{post.totalComments}</Text>
