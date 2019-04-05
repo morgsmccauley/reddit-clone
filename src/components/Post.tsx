@@ -3,16 +3,19 @@ import {
   Text,
   View,
   StyleSheet,
-  Dimensions,
+  Image,
 } from 'react-native';
 
-export interface IPost {
-  title: string;
-  id: string;
-  author: string;
-  num_comments: number;
-  score: number;
+import { IPost } from '../services/postsService';
+
+export interface ImageDetails {
   url: string;
+  width: number;
+  height: number;
+}
+
+export interface ImageSource {
+  source: ImageDetails;
 }
 
 interface Props {
@@ -25,9 +28,14 @@ const Post = ({ post }: Props) => (
       <Text>{`u/${post.author}`}</Text>
       <Text style={styles.title}>{post.title}</Text>
     </View>
+    <Image
+      style={{ height: post.image.height, width: post.image.width }}
+      resizeMode="contain"
+      source={{ uri: post.image.url }}
+    />
     <View style={styles.footerContainer}>
       <Text>{post.score}</Text>
-      <Text>{post.num_comments}</Text>
+      <Text>{post.totalComments}</Text>
       <Text>Share</Text>
     </View>
   </View>
@@ -50,11 +58,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: '500',
     fontSize: 20,
-  },
-  image: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').width,
-    marginVertical: 20,
   },
 });
 
