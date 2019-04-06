@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import styles from './Subreddit.style';
-import Posts from '../../components/Posts/Posts';
+import Posts from '../../components/Posts';
 import { IPost } from '../../types/post';
 import { fetchPostsForSubreddit } from '../../actions/postsActions';
 
