@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import styles from './Subreddit.style';
-import Posts from '../../components/Posts';
+import Posts from '../../components/Posts/Posts';
 import { IPost } from '../../types/post';
 import { fetchPostsForSubreddit } from '../../actions/postsActions';
 
@@ -43,4 +43,5 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   fetchPosts: (subreddit: string) => dispatch(fetchPostsForSubreddit(subreddit)),
 });
 
+export { Subreddit as SubredditUnconnected };
 export default connect(mapStateToProps, mapDispatchToProps)(Subreddit);
