@@ -2,11 +2,12 @@ import React from 'react';
 import {
   Text,
   View,
-  StyleSheet,
 } from 'react-native';
 
-import Image from './Image';
-import { IPost } from '../types/post';
+import Image from '../Image';
+
+import styles from './Post.style';
+import { IPost } from '../../types/post';
 
 interface Props {
   post: IPost;
@@ -26,25 +27,5 @@ const Post = ({ post }: Props) => (
     </View>
   </View>
 );
-
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 5,
-    marginVertical: 5,
-    backgroundColor: '#ffffff',
-  },
-  header: {
-    paddingHorizontal: 10,
-  },
-  footerContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  title: {
-    fontWeight: '500',
-    fontSize: 20,
-  },
-});
 
 export default Post;

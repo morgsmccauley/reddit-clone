@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 
-import Post from '../Post';
+import Post from '../Post/Post';
 import { IPost } from '../../types/post';
 
 interface Props {
