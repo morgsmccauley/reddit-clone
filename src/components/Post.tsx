@@ -3,32 +3,14 @@ import {
   Text,
   View,
   StyleSheet,
-  Image,
 } from 'react-native';
 
-import { IPost, IImage } from '../types/post';
-
-export interface ImageDetails {
-  url: string;
-  width: number;
-  height: number;
-}
-
-export interface ImageSource {
-  source: ImageDetails;
-}
+import Image from './Image';
+import { IPost } from '../types/post';
 
 interface Props {
   post: IPost;
 }
-
-const renderImage = ({ height, width, url }: IImage) => (
-  <Image
-    style={{ height, width }}
-    resizeMode="contain"
-    source={{ uri: url }}
-  />
-);
 
 const Post = ({ post }: Props) => (
   <View style={styles.container}>
@@ -36,7 +18,7 @@ const Post = ({ post }: Props) => (
       <Text>{`u/${post.author}`}</Text>
       <Text style={styles.title}>{post.title}</Text>
     </View>
-    {post.image && renderImage(post.image)}
+    {post.image && <Image image={post.image}/>}
     <View style={styles.footerContainer}>
       <Text>{post.score}</Text>
       <Text>{post.totalComments}</Text>
