@@ -4769,10 +4769,9 @@ react-is@^16.8.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
   integrity sha512-PVadd+WaUDOAciICm/J1waJaSvgq+4rHE/K70j0PFqKhkTBsPv/82UGQJNXAngz1fOQLLxI6z1sEDmJDQhCTAA==
 
-react-native-mock-render@0.1.2:
+"react-native-mock-render@file:../react-native-mock-render/react-native-mock-render-0.1.2.tgz":
   version "0.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-mock-render/-/react-native-mock-render-0.1.2.tgz#52523cf461ef35f797e0f4b5e48f3610f51d0e07"
-  integrity sha512-cSNatPLOHyGLWRSlGfu6S50Oj3oM+dIGjgu3l4H+hn0gaX0ElJosdr+qfoAJLqgo9q8kxBnKUbc8iVWaWtO6ag==
+  resolved "file:../react-native-mock-render/react-native-mock-render-0.1.2.tgz#6ec374a1202ef3c3a1b9a0f77962fda218975904"
   dependencies:
     create-react-class "^15.6.2"
     cubic-bezier "^0.1.2"
