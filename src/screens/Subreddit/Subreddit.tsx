@@ -11,7 +11,7 @@ import { fetchPostsForSubreddit } from '../../actions/postsActions';
 interface Props {
   posts: IPost[];
   isFetching: boolean;
-  fetchPosts?: (subreddit: string) => void;
+  fetchPosts: (subreddit: string) => void;
 }
 
 const renderLoading = () => <Text>Loading...</Text>;
@@ -22,7 +22,7 @@ const Subreddit = ({
   isFetching,
 }: Props) => {
   useEffect(() => {
-    fetchPosts && fetchPosts('aww');
+    fetchPosts('aww');
   }, []);
 
   const renderPosts = () => <Posts posts={posts} />;
@@ -32,6 +32,10 @@ const Subreddit = ({
       {isFetching ? renderLoading() : renderPosts()}
     </View>
   );
+};
+
+Subreddit.defaultProps = {
+  fetchPosts: () => {},
 };
 
 const mapStateToProps = (state: any) => ({

@@ -19,7 +19,9 @@ const Post = ({ post }: Props) => (
       <Text>{`u/${post.author}`}</Text>
       <Text style={styles.title}>{post.title}</Text>
     </View>
-    {post.image && <Image image={post.image}/>}
+    <View style={styles.mediaContainer}>
+      {post.image && <Image image={post.image}/>}
+    </View>
     <View style={styles.footerContainer}>
       <Text>{post.score}</Text>
       <Text>{post.totalComments}</Text>

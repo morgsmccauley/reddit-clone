@@ -10,6 +10,7 @@ const post = {
   author: 'author',
   totalComments: 0,
   score: 0,
+  image: undefined,
 };
 
 describe('Post', () => {

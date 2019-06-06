@@ -18,4 +18,7 @@ export default StyleSheet.create({
     fontWeight: '500',
     fontSize: 20,
   },
+  mediaContainer: {
+    marginVertical: 10,
+  },
 });
