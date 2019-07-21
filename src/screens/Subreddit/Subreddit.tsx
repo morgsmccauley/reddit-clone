@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import styles from './Subreddit.style';
 import Posts from '../../components/Posts';
+import SearchBar from '../../components/SearchBar';
 import { IPost } from '../../types/post';
 import { fetchPostsForSubreddit } from '../../actions/postsActions';
 
@@ -21,14 +22,17 @@ const Subreddit = ({
   posts,
   isFetching,
 }: Props) => {
+  const [subreddit, setSubreddit] = useState('aww');
+
   useEffect(() => {
-    fetchPosts('aww');
-  }, []);
+    fetchPosts(subreddit);
+  }, [subreddit]);
 
   const renderPosts = () => <Posts posts={posts} />;
 
   return (
     <View style={styles.container}>
+      <SearchBar onSubmit={setSubreddit} />
       {isFetching ? renderLoading() : renderPosts()}
     </View>
   );
