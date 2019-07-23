@@ -1,4 +1,4 @@
-import { fetchPosts } from '../services/postsService';
+import { fetchPosts } from '../services/redditService';
 
 const actions = {
   FETCHING_POSTS: 'FETCH_POSTS',
@@ -11,9 +11,10 @@ export default actions;
 export const fetchPostsForSubreddit = (subreddit: string) => async (dispatch: Function) => {
   dispatch({ type: actions.FETCHING_POSTS });
   try {
+    const results = await fetchPosts(subreddit);
     dispatch({
       type: actions.FETCH_POSTS_SUCCESS,
-      payload: await fetchPosts(subreddit),
+      payload: results,
     });
   } catch (error) {
     dispatch({

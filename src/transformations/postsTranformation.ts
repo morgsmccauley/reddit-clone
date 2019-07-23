@@ -43,5 +43,8 @@ const transformPost = (rawPost: any): IPost => {
 
 export const tranformPosts = (response: any): IPost[] => {
   const rawPosts = prop(response, 'data', 'children');
-  return rawPosts.map(transformPost);
+  if (rawPosts && rawPosts.length) {
+    return rawPosts.map(transformPost);
+  }
+  return [];
 };
