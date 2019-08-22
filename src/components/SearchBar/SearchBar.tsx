@@ -16,17 +16,19 @@ const styles = StyleSheet.create({
 
 interface Props {
   onSubmit: (searchString: string) => void;
+  onFocus: () => void;
 }
 
-const SearchBar = ({ onSubmit }: Props) => {
-  const onBlur = (e: { nativeEvent: { text: string } }) => onSubmit(e.nativeEvent.text);
+const SearchBar = ({ onSubmit, onFocus }: Props) => {
+  const handleBlur = (e: { nativeEvent: { text: string } }) => onSubmit(e.nativeEvent.text);
 
   return (
     <View style={styles.container}>
       <TextInput
+        onFocus={onFocus}
         style={styles.input}
         placeholder="Search"
-        onBlur={onBlur}
+        onBlur={handleBlur}
       />
     </View>
   );

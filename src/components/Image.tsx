@@ -5,11 +5,12 @@ import { IImage } from '../types/post';
 
 interface Props {
   image: IImage;
+  style: Object;
 }
 
-const Image = ({ image }: Props) => (
+const Image = ({ image, style }: Props) => (
   <RNImage
-    style={{ height: image.height, width: image.width }}
+    style={{ ...style, height: image.height, width: image.width }}
     resizeMode="contain"
     source={{ uri: image.url }}
   />
